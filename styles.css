@@ -130,10 +130,25 @@ textarea {
     min-height: var(--nav-height);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     background: color-mix(in srgb, var(--background) 78%, transparent);
+    -webkit-backdrop-filter: blur(24px) saturate(1.35);
     backdrop-filter: blur(24px) saturate(1.35);
 }
 
+.site-header::before {
+    position: fixed;
+    top: -100vh;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    pointer-events: none;
+    content: "";
+    background: inherit;
+    -webkit-backdrop-filter: inherit;
+    backdrop-filter: inherit;
+}
+
 .nav {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
