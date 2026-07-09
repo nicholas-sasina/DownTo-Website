@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Support | DownTo</title>
+    <meta name="description" content="Get support for DownTo, report a bug, or contact the team.">
+    <meta name="theme-color" content="#20d982">
+    <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+    <link rel="icon" href="assets/favicon-512.png" sizes="512x512">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <nav class="nav" aria-label="Main navigation">
+            <a class="brand" href="index.html" aria-label="DownTo home">
+                <img src="assets/down-to-logo.png" alt="" width="34" height="34">
+                <span>DownTo</span>
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#screenshots">Screenshots</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="support.html" aria-current="page">Support</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section class="page-hero container">
+            <p class="eyebrow">Support</p>
+            <h1>Contact us.</h1>
+            <p class="lead">Use this page for help, bug reports, feedback, or other questions.</p>
+        </section>
+
+        <section class="container support-layout" aria-label="Support options">
+            <div>
+                <div class="support-grid">
+                    <article class="support-card">
+                        <h3>Account help</h3>
+                        <p>Get help signing in, updating your profile, or managing access to your account.</p>
+                    </article>
+                    <article class="support-card">
+                        <h3>Bug reports</h3>
+                        <p>Tell us what happened, what you expected, and which iPhone and iOS version you use.</p>
+                    </article>
+                    <article class="support-card">
+                        <h3>Safety</h3>
+                        <p>Report misuse, unwanted contact, or concerns about content shared through DownTo.</p>
+                    </article>
+                </div>
+
+                <article class="legal-card">
+                    <h2>Contact support</h2>
+                    <p>Email <a href="mailto:downtosupport@gmail.com">downtosupport@gmail.com</a> or use the template below to prepare your message.</p>
+                    <form class="support-form" action="mailto:downtosupport@gmail.com" method="post" enctype="text/plain">
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <input id="name" name="name" autocomplete="name" required>
+                        </div>
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input id="email" name="email" type="email" autocomplete="email" required>
+                        </div>
+                        <div class="field">
+                            <label for="subject">Subject</label>
+                            <input id="subject" name="subject" placeholder="Account help, bug report, feedback, safety inquiry, etc" required>
+                        </div>
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button class="button" type="submit">Email support</button>
+                        <p class="form-note">This form opens your email app and formats the message. Review and send from there.</p>
+                    </form>
+                </article>
+            </div>
+
+            <aside class="side-note">
+                <strong>We’re here to help.</strong>
+                <p><br>Whether you have a question about your account, want to report a bug, or need to share a safety concern, we’ll review your message and get back to you as soon as possible.</p>
+                <p>Please include as much detail as you can so we can help more quickly. If you are reporting a bug, mention the device model, iOS version, and what you expected to happen.</p>
+            </aside>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span>&copy; <span data-year></span> DownTo. All rights reserved.</span>
+            <div class="footer-links">
+                <a href="support.html">Support</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('.support-form');
+            if (!form) return;
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                const name = form.elements.name.value.trim();
+                const email = form.elements.email.value.trim();
+                const subject = form.elements.subject.value.trim();
+                const message = form.elements.message.value.trim();
+
+                const body = `My name is ${name}. You can reach me at ${email}. Message: ${message}`;
+                const mailtoUrl = `mailto:downtosupport@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+                window.location.href = mailtoUrl;
+            });
+        });
+    </script>
+</body>
+</html>
