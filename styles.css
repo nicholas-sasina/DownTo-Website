@@ -367,6 +367,43 @@ h3 {
     backdrop-filter: blur(18px);
 }
 
+@media (hover: none) {
+    a,
+    a:hover {
+        color: inherit;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .nav-links a:hover {
+        background: transparent;
+        color: var(--muted);
+    }
+
+    .nav-links a[aria-current="page"],
+    .nav-links a[aria-current="page"]:hover {
+        background: var(--faint);
+        color: var(--text);
+    }
+
+    .app-store-button:hover {
+        color: var(--background);
+        transform: none;
+    }
+
+    .button:hover {
+        color: #fff;
+        transform: none;
+    }
+
+    .button-secondary:hover {
+        color: var(--text);
+    }
+}
+
 .hero-note {
     margin: 22px 0 0;
     color: var(--muted);
