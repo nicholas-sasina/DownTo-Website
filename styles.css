@@ -792,6 +792,7 @@ h3 {
 .activity-section {
     position: relative;
     padding: clamp(24px, 4vw, 52px);
+    margin-bottom: clamp(32px, 5vw, 64px);
 }
 
 .activity-section::before {
