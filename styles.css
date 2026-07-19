@@ -309,6 +309,7 @@ h3 {
 }
 
 .app-store-button,
+.testflight-button,
 .button,
 .button-secondary {
     display: inline-flex;
@@ -320,6 +321,7 @@ h3 {
 }
 
 .app-store-button {
+    border: 0;
     gap: 12px;
     padding: 10px 20px;
     background: var(--text);
@@ -336,9 +338,87 @@ h3 {
     flex: 0 0 auto;
 }
 
+.coming-soon-action {
+    position: relative;
+    display: inline-flex;
+    width: 190px;
+}
+
+.coming-soon-action .app-store-button {
+    width: 100%;
+}
+
+.app-store-button.is-disabled {
+    cursor: not-allowed;
+    opacity: 0.56;
+}
+
+.testflight-button.is-disabled {
+    cursor: not-allowed;
+    opacity: 0.56;
+}
+
+.app-store-button.is-disabled:hover,
+.testflight-button.is-disabled:hover {
+    transform: none;
+}
+
+.coming-soon-prompt {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    z-index: 4;
+    width: max-content;
+    max-width: min(260px, 82vw);
+    padding: 9px 13px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface-strong);
+    box-shadow: var(--soft-shadow);
+    color: var(--text);
+    font-size: 0.82rem;
+    font-weight: 750;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 4px);
+    transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.coming-soon-prompt.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.coming-soon-prompt.no-transition {
+    transition: none;
+}
+
+.testflight-button {
+    width: 190px;
+    gap: 12px;
+    padding: 10px 20px;
+    border: 0;
+    background: var(--active);
+    color: #fff;
+    box-shadow: var(--soft-shadow);
+}
+
+.testflight-button:hover {
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.testflight-icon {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+}
+
 .app-store-copy {
     display: grid;
+    justify-items: start;
     line-height: 1.05;
+    text-align: left;
 }
 
 .app-store-copy small {
@@ -391,6 +471,11 @@ h3 {
 
     .app-store-button:hover {
         color: var(--background);
+        transform: none;
+    }
+
+    .testflight-button:hover {
+        color: #fff;
         transform: none;
     }
 
@@ -792,7 +877,6 @@ h3 {
 .activity-section {
     position: relative;
     padding: clamp(24px, 4vw, 52px);
-    margin-bottom: clamp(32px, 5vw, 64px);
 }
 
 .activity-section::before {
@@ -873,7 +957,11 @@ h3 {
     align-items: start;
     justify-content: center;
     gap: clamp(58px, 7vw, 96px) clamp(38px, 6vw, 82px);
-    padding: clamp(36px, 6vw, 74px) clamp(18px, 5vw, 64px) clamp(58px, 8vw, 108px);
+    padding: clamp(36px, 6vw, 74px) clamp(18px, 5vw, 64px) 0;
+}
+
+#faq {
+    padding-top: 0;
 }
 
 .screenshot-card {
@@ -1440,7 +1528,7 @@ h3 {
     .screenshot-float-field {
         grid-template-columns: repeat(2, minmax(0, 240px));
         gap: 56px 28px;
-        padding: 26px clamp(10px, 4vw, 28px) 64px;
+        padding: 26px clamp(10px, 4vw, 28px) 0;
     }
 
     .screenshot-card {

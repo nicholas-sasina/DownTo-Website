@@ -88,5 +88,42 @@ document.querySelectorAll("[data-year]").forEach((node) => {
     node.textContent = String(new Date().getFullYear());
 });
 
+let activeStatus;
+let statusTimer;
+let statusCleanupTimer;
+
+document.querySelectorAll('[aria-disabled="true"][aria-describedby]').forEach((button) => {
+    const status = document.getElementById(button.getAttribute('aria-describedby'));
+
+    if (status) {
+        button.addEventListener('click', () => {
+            window.clearTimeout(statusTimer);
+            window.clearTimeout(statusCleanupTimer);
+
+            if (activeStatus && activeStatus !== status) {
+                const previousStatus = activeStatus;
+                previousStatus.classList.add('no-transition');
+                previousStatus.classList.remove('is-visible');
+                window.requestAnimationFrame(() => {
+                    previousStatus.classList.remove('no-transition');
+                });
+            }
+
+            status.classList.add('is-visible');
+            activeStatus = status;
+
+            statusTimer = window.setTimeout(() => {
+                status.classList.remove('is-visible');
+
+                statusCleanupTimer = window.setTimeout(() => {
+                    if (activeStatus === status) {
+                        activeStatus = undefined;
+                    }
+                }, 160);
+            }, 1500);
+        });
+    }
+});
+
 window.addEventListener('scroll', setActiveNavLink, { passive: true });
 window.addEventListener('load', setActiveNavLink);
